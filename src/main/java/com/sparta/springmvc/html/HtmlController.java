@@ -39,7 +39,7 @@ public class HtmlController {
     @GetMapping("/html/dynamic")
     public String htmlDynamic(Model model){//데이터를 모델에 넣는 데, spring에서는 model을 객체로 제공함
         visitCount++;// 이 api요청이 들어오면 방문count를 1씩 늘리기
-        model.addAttribute("visits",visitCount);// model에 변화한 visitCount데이터 넣음
+        model.addAttribute("visits",visitCount);// model(hello-visit.html의 ${visits})에 변화한 visitCount데이터 넣음
         return "hello-visit";
         //model(templates>hello-visit.html의 ${visits})과 viewname(hello-visit)의 정보 반환
     }
