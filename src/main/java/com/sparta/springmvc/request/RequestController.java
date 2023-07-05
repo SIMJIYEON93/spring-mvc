@@ -13,6 +13,7 @@ public class RequestController {
 
     // [Request sample]
 // GET http://localhost:8080/hello/request/star/Robbie/age/95
+    //PathVariable 방식으로 데이터가 넘어올때 @PathVariable과 변수/변수타입으로 파라미터로 넣어 데이터 받기
     @GetMapping("/star/{name}/age/{age}")
     @ResponseBody
     public String helloRequestPath(@PathVariable String name, @PathVariable int age)
@@ -22,6 +23,7 @@ public class RequestController {
 
     // [Request sample]
 // GET http://localhost:8080/hello/request/form/param?name=Robbie&age=95
+    //RequestParam 방식으로 데이터가 넘어올때 @RequestParam과 변수/변수타입으로 파라미터로 넣어 데이터 받기
     @GetMapping("/form/param")
     @ResponseBody
     public String helloGetRequestParam(  String name, int age) {
@@ -34,6 +36,8 @@ public class RequestController {
 //  Content type: application/x-www-form-urlencoded
 // Body
 //  name=Robbie&age=95
+    //HttpBody부분에 JSON형식으로 데이터가 넘어올 때 @RequestParam과 변수/변수타입으로 파라미터로 넣어 데이터 받기
+
     @PostMapping("/form/param")
     @ResponseBody
     public String helloPostRequestParam(@RequestParam String name, @RequestParam int age) {
@@ -46,6 +50,8 @@ public class RequestController {
 //  Content type: application/x-www-form-urlencoded
 // Body
 //  name=Robbie&age=95
+    //HttpBody에 JSON형식으로 데이터가 넘어올 때 @ModelAttribute와 객체를 파라미터로 넣어 데이터 받기
+
     @PostMapping("/form/model")
     @ResponseBody
     public String helloRequestBodyForm(@ModelAttribute Star star) {
@@ -54,6 +60,7 @@ public class RequestController {
 
     // [Request sample]
 // GET http://localhost:8080/hello/request/form/param/model?name=Robbie&age=95
+    //쿼리 스트링 방식으로 데이터가 넘어올때 @ModelAttribute와 객체를 파라미터로 넣어 데이터 받기
     @GetMapping("/form/param/model")
     @ResponseBody
     public String helloRequestParam(@ModelAttribute Star star) { //@ModelAttribute생략가능
@@ -66,6 +73,7 @@ public class RequestController {
 //  Content type: application/json
 // Body
 //  {"name":"Robbie","age":"95"}
+    //HttpBody에 JSON형식으로 데이터가 들어올때 @RequestBody와 객체를 파라미터로 넣어 데이터 받기
     @PostMapping("/form/json")
     @ResponseBody
     public String helloPostRequestJson(@RequestBody Star star) {
